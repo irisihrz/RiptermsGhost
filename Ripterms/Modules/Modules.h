@@ -367,6 +367,15 @@ namespace Ripterms
 			float motionZ_multiplier = 0.0f;
 		};
 
+		class AirJump : public IModule
+		{
+		public:
+			AirJump() : IModule("AirJump", "Permet de sauter dans les airs (double saut)") {}
+			void onUpdateWalkingPlayer(JNIEnv* env, EntityPlayerSP& this_player, bool* cancel) override;
+		private:
+			bool hasAirJumped = false;
+		};
+
 
 		class Category
 		{
@@ -393,7 +402,7 @@ namespace Ripterms
 		{
 			Category::create<AimAssist, Reach, LeftClicker, WTap, HitBoxes, BackTrack, NoMiss, BlockOnAttack>("Combat"),
 			Category::create<FastPlace, Blink, LegitScaffold, NoFall>("Player"),
-			Category::create<Velocity, VelocityPacket, Sprint, Glide, VelocityFly, Speed>("Movement"),
+			Category::create<Velocity, VelocityPacket, Sprint, Glide, VelocityFly, Speed, AirJump>("Movement"),
 			Category::create<Xray, FullBright, ESP>("Render"),
 			Category::create<ClientBrandChanger, Test>("Misc")
 		};
