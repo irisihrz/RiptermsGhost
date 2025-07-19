@@ -15,6 +15,12 @@ void Ripterms::Modules::Xray::renderGUI()
 	ImGui::IOSToggle("Iron", &iron);
 	ImGui::IOSToggle("Emerald", &emerald);
 	ImGui::IOSToggle("Lapis", &lapis);
+	ImGui::IOSToggle("Amethyst", &amethyst);
+	ImGui::IOSToggle("Titane", &titane);
+	ImGui::IOSToggle("Findium", &findium);
+	ImGui::IOSToggle("Paladium", &paladium);
+	ImGui::IOSToggle("Trixium", &trixium);
+	ImGui::IOSToggle("Green Paladium", &greenPaladium);
 	ImGui::IOSToggle("Other", &other);
 }
 
@@ -134,6 +140,12 @@ Ripterms::Modules::Xray::RenderData::RenderData(const Ripterms::Maths::Vector3d&
 	bool emerald = blockName.find("emerald") != std::string::npos;
 	bool redstone = blockName.find("redstone") != std::string::npos;
 	bool coal = blockName.find("coal") != std::string::npos;
+	bool amethyst = blockName.find("amethyst") != std::string::npos;
+	bool titane = blockName.find("titane") != std::string::npos;
+	bool findium = blockName.find("findium") != std::string::npos;
+	bool paladium = blockName.find("paladium") != std::string::npos;
+	bool trixium = blockName.find("trixium") != std::string::npos;
+	bool greenPaladium = blockName.find("green_paladium") != std::string::npos;
 
 	if (xray->diamond && diamond)
 		color = { 76, 229, 237, 40 };
@@ -149,7 +161,19 @@ Ripterms::Modules::Xray::RenderData::RenderData(const Ripterms::Maths::Vector3d&
 		color = { 255, 41, 41, 40 };
 	else if (xray->coal && coal)
 		color = { 23, 21, 21, 40 };
-	else if (xray->other && !diamond && !gold && !iron && !lapis && !emerald && !redstone && !coal)
+	else if (xray->amethyst && amethyst)
+		color = { 148, 0, 211, 40 };
+	else if (xray->titane && titane)
+		color = { 64, 64, 64, 40 };
+	else if (xray->findium && findium)
+		color = { 255, 255, 0, 40 };
+	else if (xray->paladium && paladium)
+		color = { 255, 165, 0, 40 };
+	else if (xray->trixium && trixium)
+		color = { 255, 255, 224, 40 };
+	else if (xray->greenPaladium && greenPaladium)
+		color = { 0, 128, 0, 40 };
+	else if (xray->other && !diamond && !gold && !iron && !lapis && !emerald && !redstone && !coal && !amethyst && !titane && !findium && !paladium && !trixium && !greenPaladium)
 		color = { 209, 100, 245, 40 };
 	else
 		render = false;
